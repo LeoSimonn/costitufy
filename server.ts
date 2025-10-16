@@ -30,14 +30,22 @@ try {
             format: 'esm',
             minify: false,
             sourcemap: 'inline',
+            external: ['react', 'react-dom', 'react/jsx-runtime', 'recharts'],
           });
 
           if (transpiled.outputs.length > 0) {
             const output = transpiled.outputs[0];
-            const text = await output.text();
+            let text = await output.text();
+            
+            // Replace local imports with CDN imports
+            text = text.replace(/from\s+["']react["']/g, 'from "https://esm.sh/react@18.3.1"');
+            text = text.replace(/from\s+["']react-dom\/client["']/g, 'from "https://esm.sh/react-dom@18.3.1/client"');
+            text = text.replace(/from\s+["']react\/jsx-runtime["']/g, 'from "https://esm.sh/react@18.3.1/jsx-runtime"');
+            text = text.replace(/from\s+["']recharts["']/g, 'from "https://esm.sh/recharts@2.12.7"');
+            
             return new Response(text, {
               headers: {
-                'Content-Type': 'application/javascript',
+                'Content-Type': 'application/javascript; charset=utf-8',
                 'Cache-Control': 'no-cache',
               },
             });
