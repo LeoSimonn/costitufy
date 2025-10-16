@@ -67,10 +67,12 @@ Acesse `https://github.com/SEU-USUARIO/costitufy` e confirme que os arquivos est
 1. **Build Local**
    ```bash
    cd /Users/leosimon/Downloads/copy-of-costitufy
-   bun run build:css
    bun run build
-   cp index.html dist/
-   cp output.css dist/
+   # Isso faz:
+   # - Compila Tailwind CSS
+   # - Transpila TypeScript para JavaScript
+   # - Copia arquivos para dist/
+   # - Ajusta index.html para usar .js
    ```
 
 2. **Deploy via Netlify CLI**
@@ -140,12 +142,17 @@ git push
 - O comando de build deve instalar o Bun primeiro
 
 **Erro: "output.css not found"**
-- Certifique-se de que `bun run build:css` está no comando de build
-- Verifique se o arquivo está sendo copiado para `dist/`
+- Execute `bun run build` localmente para verificar
+- O script `build.ts` deve gerar o CSS automaticamente
 
 **Erro: Página em branco**
 - Verifique se `index.html` está na pasta `dist`
-- Confirme que os redirects estão configurados no `netlify.toml`
+- Confirme que os arquivos `.js` foram gerados na pasta `dist`
+- Verifique se os redirects estão configurados no `netlify.toml`
+
+**Erro: "Failed to load module script"**
+- Isso foi corrigido! O build agora usa CDN (esm.sh) para dependências
+- Verifique se o script `build.ts` está sendo executado corretamente
 
 ### Outros Problemas
 
