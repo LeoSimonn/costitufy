@@ -53,7 +53,7 @@ for (const file of filesToBuild) {
     target: 'browser',
     format: 'esm',
     minify: true,
-    external: ['react', 'react-dom', 'react/jsx-runtime', 'react-dom/client', 'recharts'],
+    external: ['react', 'react-dom', 'react/jsx-runtime', 'react/jsx-dev-runtime', 'react-dom/client', 'recharts'],
   });
 
   if (transpiled.outputs.length > 0) {
@@ -64,6 +64,7 @@ for (const file of filesToBuild) {
     text = text.replace(/from\s*["']react["']/g, 'from "https://esm.sh/react@18.3.1"');
     text = text.replace(/from\s*["']react-dom\/client["']/g, 'from "https://esm.sh/react-dom@18.3.1/client"');
     text = text.replace(/from\s*["']react\/jsx-runtime["']/g, 'from "https://esm.sh/react@18.3.1/jsx-runtime"');
+    text = text.replace(/from\s*["']react\/jsx-dev-runtime["']/g, 'from "https://esm.sh/react@18.3.1/jsx-dev-runtime"');
     text = text.replace(/from\s*["']recharts["']/g, 'from "https://esm.sh/recharts@2.12.7"');
     
     // Substituir imports locais relativos
