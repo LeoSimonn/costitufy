@@ -58,11 +58,18 @@ function App() {
   
   return (
     <div className="min-h-screen bg-background text-foreground">
-      <header className="bg-card border-b border-border sticky top-0 z-10">
+      <header className="glass-effect border-b border-border/50 sticky top-0 z-50 shadow-md backdrop-blur-md">
         <div className="max-w-screen-2xl mx-auto flex items-center justify-between p-4">
-          <div className="flex items-center gap-3">
-            <CostitufyLogoIcon className="h-8 w-8 text-primary" />
-            <h1 className="text-2xl font-bold text-foreground">Costitufy</h1>
+          <div className="flex items-center gap-3 animate-fade-in">
+            <div className="bg-gradient-to-br from-primary to-primary-hover p-2 rounded-xl shadow-lg">
+              <CostitufyLogoIcon className="h-6 w-6 text-white" />
+            </div>
+            <div>
+              <h1 className="text-2xl font-bold bg-gradient-to-r from-primary to-primary-hover bg-clip-text text-transparent">
+                Costitufy
+              </h1>
+              <p className="text-xs text-muted-foreground">AI Cost Calculator</p>
+            </div>
           </div>
           <div className="flex items-center space-x-4">
              <div className="flex items-center space-x-2">
@@ -84,10 +91,10 @@ function App() {
                   value={fxRate.rate.toFixed(4)}
                   onChange={(e) => updateManualFxRate(parseFloat(e.target.value))}
                   disabled={isFxLoading}
-                  className="w-24 h-10"
+                  className="w-28"
                   step="0.01"
                 />
-                <Button variant="ghost" size="icon" className="h-10 w-10" onClick={fetchLatestFxRate} disabled={isFxLoading} aria-label="Refresh exchange rate">
+                <Button variant="ghost" size="icon" onClick={fetchLatestFxRate} disabled={isFxLoading} aria-label="Refresh exchange rate">
                   <ArrowPathIcon className={`h-5 w-5 ${isFxLoading ? 'animate-spin' : ''}`} />
                 </Button>
               </div>
@@ -109,7 +116,7 @@ function App() {
       <main className="max-w-screen-2xl mx-auto p-4 sm:p-6 lg:p-8">
         <Alerts fxRate={fxRate} />
 
-        <div className="bg-card border border-border rounded-lg p-4 mb-8">
+        <div className="bg-gradient-to-br from-card to-secondary/30 border border-border/50 rounded-2xl p-6 mb-8 shadow-card animate-slide-up">
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 items-start">
               <div>
                 <label htmlFor="wpm" className="block text-sm font-medium text-muted-foreground mb-1.5">Words Per Minute (WPM)</label>
@@ -146,7 +153,7 @@ function App() {
                   index={index}
                 />
               ))}
-              <div className="mt-6 p-4 border border-border rounded-lg bg-card">
+              <div className="mt-6 p-6 border-2 border-dashed border-primary/20 rounded-2xl bg-gradient-to-br from-primary/5 to-transparent hover:border-primary/40 transition-all duration-300">
                  <h3 className="text-lg font-semibold mb-3 text-foreground">Add a new step</h3>
                  <div className="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-4">
                     <div>

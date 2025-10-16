@@ -2,7 +2,11 @@
 import React from 'react';
 
 export const Card: React.FC<{ children: React.ReactNode; className?: string }> = ({ children, className }) => {
-  return <div className={`bg-card text-card-foreground border border-border rounded-xl shadow-sm ${className}`}>{children}</div>;
+  return (
+    <div className={`bg-card text-card-foreground border border-border/50 rounded-2xl shadow-card hover:shadow-card-hover transition-all duration-300 backdrop-blur-sm ${className}`}>
+      {children}
+    </div>
+  );
 };
 
 export const CardHeader: React.FC<{ children: React.ReactNode; className?: string }> = ({ children, className }) => {
@@ -10,11 +14,11 @@ export const CardHeader: React.FC<{ children: React.ReactNode; className?: strin
 };
 
 export const CardTitle: React.FC<{ children: React.ReactNode; className?: string }> = ({ children, className }) => {
-  return <h3 className={`text-xl font-semibold leading-none tracking-tight ${className}`}>{children}</h3>;
+  return <h3 className={`text-xl font-bold leading-none tracking-tight bg-gradient-to-r from-foreground to-foreground/80 bg-clip-text ${className}`}>{children}</h3>;
 };
 
 export const CardDescription: React.FC<{ children: React.ReactNode; className?: string }> = ({ children, className }) => {
-  return <p className={`text-sm text-muted-foreground ${className}`}>{children}</p>;
+  return <p className={`text-sm text-muted-foreground/80 ${className}`}>{children}</p>;
 };
 
 export const CardContent: React.FC<{ children: React.ReactNode; className?: string }> = ({ children, className }) => {
