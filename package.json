@@ -1,0 +1,28 @@
+{
+  "name": "costitufy",
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "bun run build:css && bun run dev:server",
+    "dev:server": "bun --hot server.ts",
+    "dev:clean": "bun run kill-port && bun run dev",
+    "kill-port": "lsof -ti:3000 | xargs kill -9 2>/dev/null || echo 'Porta 3000 livre'",
+    "build:css": "tailwindcss -i ./index.css -o ./output.css --minify",
+    "watch:css": "tailwindcss -i ./index.css -o ./output.css --watch",
+    "build": "bun run build:css && bun build ./index.tsx --outdir ./dist --target browser --format esm --splitting --minify",
+    "start": "NODE_ENV=production bun server.ts",
+    "preview": "bun server.ts"
+  },
+  "dependencies": {
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "recharts": "^2.12.7"
+  },
+  "devDependencies": {
+    "@types/react": "^18.3.1",
+    "@types/react-dom": "^18.3.1",
+    "bun-types": "latest",
+    "tailwindcss": "^3.4.1",
+    "typescript": "^5.0.0"
+  }
+}

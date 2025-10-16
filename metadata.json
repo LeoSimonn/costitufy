@@ -1,0 +1,5 @@
+{
+  "name": "Copy of Costitufy",
+  "description": "A single-page application to estimate, simulate, and monitor costs for applications using AI APIs (like transcription and LLMs) and infrastructure. It includes features like a pricing catalog, currency conversion, a scenario builder, and cost breakdown analysis.",
+  "requestFramePermissions": []
+}
