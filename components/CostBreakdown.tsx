@@ -73,11 +73,11 @@ export const CostBreakdown: React.FC<CostBreakdownProps> = ({
                 
                 <div className="space-y-3">
                     {costBreakdown.map((item, index) => (
-                        <div key={index} className={`p-3 rounded-lg ${item.isBottleneck ? 'bg-destructive/20' : 'bg-secondary'}`}>
+                        <div key={index} className={`p-4 rounded-lg border ${item.isBottleneck ? 'bg-gradient-to-r from-destructive/15 to-destructive/10 border-destructive/30' : 'bg-secondary border-border/50'}`}>
                            <div className="flex justify-between items-center">
                                 <div>
                                     <p className="font-medium text-secondary-foreground">{item.name}</p>
-                                    {item.isBottleneck && <p className="text-xs text-destructive-foreground/80 font-bold">COST BOTTLENECK (&gt;60%)</p>}
+                                    {item.isBottleneck && <p className="text-xs text-destructive font-bold mt-1 px-2 py-1 bg-destructive/20 rounded-md border border-destructive/30">COST BOTTLENECK (&gt;60%)</p>}
                                 </div>
                                 <div className="text-right">
                                     <p className="font-semibold text-secondary-foreground">{formatCurrency(item.cost, currency, fxRate)}</p>

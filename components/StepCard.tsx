@@ -39,7 +39,7 @@ const commonUseCases = [
 
 const Field: React.FC<{label: string, children: React.ReactNode}> = ({label, children}) => (
     <div>
-        <label className="block text-sm font-medium text-muted-foreground mb-1.5">{label}</label>
+        <label className="block text-sm font-semibold text-foreground mb-2">{label}</label>
         {children}
     </div>
 );
@@ -213,9 +213,9 @@ export const StepCard: React.FC<StepCardProps> = ({ step, updateStep, removeStep
                     </Button>
                 </div>
             </CardHeader>
-            <CardContent className="p-6 space-y-5">
+            <CardContent className="px-6 pt-4 pb-6 space-y-8">
                 <div>
-                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
                      <Field label="Provider">
                         <Select value={step.providerId} onChange={handleProviderChange}>
                             {PROVIDERS.map(p => <option key={p.id} value={p.id}>{p.name}</option>)}
@@ -246,8 +246,8 @@ export const StepCard: React.FC<StepCardProps> = ({ step, updateStep, removeStep
                     </Field>
                   </div>
                  {price && (
-                    <div className="text-xs text-muted-foreground mt-2 text-right">
-                        Pricing: 
+                    <div className="text-sm text-muted-foreground mt-3 text-right bg-muted/30 rounded-lg px-3 py-2">
+                        <span className="font-medium">Pricing:</span> 
                         {` $${price.inputPriceUSD.toFixed(4)} (in)`}
                         {price.cachedInputPriceUSD > 0 && ` / $${price.cachedInputPriceUSD.toFixed(4)} (cached)`}
                         {price.outputPriceUSD > 0 && ` / $${price.outputPriceUSD.toFixed(4)} (out)`}
