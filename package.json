@@ -9,7 +9,9 @@
     "kill-port": "lsof -ti:3000 | xargs kill -9 2>/dev/null || echo 'Porta 3000 livre'",
     "build:css": "tailwindcss -i ./index.css -o ./output.css --minify",
     "watch:css": "tailwindcss -i ./index.css -o ./output.css --watch",
-    "build": "bun run build:css && bun build ./index.tsx --outdir ./dist --target browser --format esm --splitting --minify",
+    "build": "bun run build.ts",
+    "build:local": "bun run build && bun run preview:static",
+    "preview:static": "cd dist && python3 -m http.server 8080",
     "start": "NODE_ENV=production bun server.ts",
     "preview": "bun server.ts"
   },
